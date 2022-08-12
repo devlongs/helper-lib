@@ -5,6 +5,14 @@ library Math {
     function getMaximumNumber(uint x, uint y) internal pure returns (uint) {
         return x >= y ? x : y;
     }
+
+    // this function removes an element from an array without leaving a hole.
+    function remove(uint[] arr, uint index) public {
+        // Move the last element into the place to delete
+        arr[index] = arr[arr.length - 1];
+        // Remove the last element
+        arr.pop();
+    }
 }
 
 contract Test {
@@ -14,7 +22,11 @@ contract Test {
 }
 
 library ArrayLib {
-    function arrayIndexFinder(uint[] memory arr, uint x) internal pure returns (uint) {
+    function arrayIndexFinder(uint[] memory arr, uint x)
+        internal
+        pure
+        returns (uint)
+    {
         for (uint i = 0; i < arr.length; i++) {
             if (arr[i] == x) {
                 return i;
